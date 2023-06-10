@@ -17,7 +17,13 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 
 const pages = ["Home", "TVShows", "Movies", "New & Popular"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = [
+  "Manage Profiles",
+  "Transfer Profile",
+  "Account",
+  "Help Center",
+  "Sign out of Netflix",
+];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -40,7 +46,7 @@ function ResponsiveAppBar() {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Container className="app-bar" maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -141,6 +147,7 @@ function ResponsiveAppBar() {
               </IconButton>
             </Tooltip>
             <Menu
+              className="profile-settings"
               sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}

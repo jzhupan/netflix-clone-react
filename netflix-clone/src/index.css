@@ -59,3 +59,13 @@ code {
 .nav li:hover {
   color: rgb(209, 209, 209);
 }
+
+.MuiMenu-list {
+  background-color: #141414;
+  color: inherit;
+  opacity: 1;
+}
+
+.app-bar {
+  background-color: #141414;
+}
