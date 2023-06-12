@@ -69,3 +69,6 @@ code {
 .app-bar {
   background-color: #141414;
 }
+.icon-button {
+  margin-right: 15px;
+}
