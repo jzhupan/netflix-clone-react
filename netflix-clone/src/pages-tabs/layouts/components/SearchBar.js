@@ -1,19 +1,10 @@
-import React from "react";
+import React, { useCallback } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
-import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-
-const StyledToolbar = styled(Toolbar)(({ theme }) => ({
-  alignItems: "flex-start",
-  paddingTop: theme.spacing(1),
-  paddingBottom: theme.spacing(2),
-  // Override media queries injected by theme.mixins.toolbar
-  "@media all": {
-    minHeight: 128,
-  },
-}));
+import { useState, useCallback } from "react";
+import { Icon } from "@mui/material";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -22,10 +13,11 @@ const Search = styled("div")(({ theme }) => ({
   "&:hover": {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
+  marginRight: theme.spacing(2),
   marginLeft: 0,
   width: "100%",
   [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(1),
+    marginLeft: theme.spacing(3),
     width: "auto",
   },
 }));
@@ -39,6 +31,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
 }));
+
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
   "& .MuiInputBase-input": {
@@ -47,45 +40,57 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
+    [theme.breakpoints.up("md")]: {
+      width: "20ch",
     },
   },
 }));
 
-export default function SearchIconBar() {
-  const [anchorElSearchIcon, setAnchorElSearchIcon] = React.useState(null);
+const JustTheIcon = () => {
+  return (
+    <IconButton size="large" aria-label="search" color="inherit">
+      <SearchIcon />
+    </IconButton>
+  );
+};
 
-  const handleOpenSearchIcon = (event) => {
-    setAnchorElSearchIcon(event.currentTarget);
-  };
+const OpenSearchBar = () => {
+  return (
+    <Search>
+      <SearchIconWrapper>
+        <SearchIcon />
+      </SearchIconWrapper>
+      <StyledInputBase
+        placeholder="Search…"
+        inputProps={{ "aria-label": "search" }}
+      />
+    </Search>
+  );
+};
 
-  const handleCloseSearchIcon = () => {
-    setAnchorElSearchIcon(null);
-  };
+export default function SearchBar() {
+  const [isActive, setIsActive] = React.useState("icon");
+  const modifyIsActive = useCallback(
+    (newIsActive) => {
+      setIsActive(newIsActive);
+    },
+    [setIsActive]
+  );
 
   return (
-    <div className="search-icon-bar">
-      <IconButton size="large" aria-label="search" color="inherit">
-        <SearchIcon onClick={handleOpenSearchIcon}>
-          <Search
-            anchorEl={anchorElSearchIcon}
-            open={Boolean(anchorElSearchIcon)}
-            onClose={handleCloseSearchIcon}
-          >
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledToolbar
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
-        </SearchIcon>
+    <>
+      <IconButton
+        size="large"
+        aria-label="search"
+        color="inherit"
+        onClick={() => modifyIsActive("icon")}
+      >
+        {isActive === "icon" && <SearchIcon />}
       </IconButton>
-    </div>
+      <IconButton onClick={() => modifyIsActive("open-search-bar")}>
+        {isActive ==="open-search-bar" <OpenSearchBar />}
+  
+      </IconButton>
+    </>
   );
 }

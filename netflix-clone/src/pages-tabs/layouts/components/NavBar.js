@@ -14,11 +14,9 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
-
 import Badge from "@mui/material/Badge";
-
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import SearchIconBar from "./SearchBar";
+import SearchBar from "./SearchBar";
 
 const pages = ["Home", "TVShows", "Movies", "New & Popular"];
 const settings = [
@@ -143,7 +141,9 @@ function ResponsiveAppBar() {
               </Button>
             ))}
           </Box>
-          <SearchIconBar />
+
+          <SearchBar />
+
           <IconButton
             size="large"
             aria-label="show 17 new notifications"
