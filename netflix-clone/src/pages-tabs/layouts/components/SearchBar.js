@@ -1,10 +1,8 @@
-import React, { useCallback } from "react";
+import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
-import { useState, useCallback } from "react";
-import { Icon } from "@mui/material";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -46,17 +44,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const JustTheIcon = () => {
-  return (
-    <IconButton size="large" aria-label="search" color="inherit">
-      <SearchIcon />
-    </IconButton>
-  );
-};
-
 const OpenSearchBar = () => {
   return (
-    <Search>
+    <Search className="open-search-bar">
       <SearchIconWrapper>
         <SearchIcon />
       </SearchIconWrapper>
@@ -69,13 +59,12 @@ const OpenSearchBar = () => {
 };
 
 export default function SearchBar() {
-  const [isActive, setIsActive] = React.useState("icon");
-  const modifyIsActive = useCallback(
-    (newIsActive) => {
-      setIsActive(newIsActive);
-    },
-    [setIsActive]
-  );
+  const [isActive, setIsActive] = useState(false);
+
+  function handleClick(SearchIcon, OpenSearchBar) {
+    setIsActive((isActive) => !isActive);
+    SearchIcon && isActive ? <SearchIcon /> : !isActive && <OpenSearchBar />;
+  }
 
   return (
     <>
@@ -83,13 +72,9 @@ export default function SearchBar() {
         size="large"
         aria-label="search"
         color="inherit"
-        onClick={() => modifyIsActive("icon")}
+        onClick={handleClick}
       >
-        {isActive === "icon" && <SearchIcon />}
-      </IconButton>
-      <IconButton onClick={() => modifyIsActive("open-search-bar")}>
-        {isActive ==="open-search-bar" <OpenSearchBar />}
-  
+        <SearchIcon />
       </IconButton>
     </>
   );
