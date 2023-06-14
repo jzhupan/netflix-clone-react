@@ -18,7 +18,7 @@ import Badge from "@mui/material/Badge";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import SearchBar from "./SearchBar";
 
-const pages = ["Home", "TVShows", "Movies", "New & Popular"];
+const pages = ["Home", "Tv Shows", "Movies", "New & Popular"];
 const settings = [
   "Manage Profiles",
   "Transfer Profile",

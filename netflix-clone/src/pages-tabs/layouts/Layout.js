@@ -27,7 +27,7 @@ export default function LayoutPage() {
       <ResponsiveAppBar />
       <Routes>
         <Route path="/Home" element={<Home />} />
-        <Route path="TVShows" element={<TVShows />} />
+        <Route path="TvShows" element={<TVShows />} />
         <Route path="Movies" element={<Movies />} />
         <Route path="New & Popular" element={<NewAndPopular />} />
       </Routes>
