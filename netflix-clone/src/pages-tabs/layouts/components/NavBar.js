@@ -18,7 +18,7 @@ import Badge from "@mui/material/Badge";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import SearchBar from "./SearchBar";
 
-const pages = ["Home", "Tv Shows", "Movies", "New & Popular"];
+const pages = ["Home", "TvShows", "Movies", "New & Popular"];
 const settings = [
   "Manage Profiles",
   "Transfer Profile",
@@ -47,8 +47,8 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static">
-      <Container className="app-bar" maxWidth="xl">
+    <AppBar className="app-bar" position="static">
+      <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -61,7 +61,6 @@ function ResponsiveAppBar() {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
               textDecoration: "none",
             }}
           >
@@ -106,7 +105,7 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+
           <Typography
             variant="h5"
             noWrap
@@ -141,9 +140,7 @@ function ResponsiveAppBar() {
               </Button>
             ))}
           </Box>
-
           <SearchBar />
-
           <IconButton
             size="large"
             aria-label="show 17 new notifications"

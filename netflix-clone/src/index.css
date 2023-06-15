@@ -8,9 +8,9 @@
   src: url("/Users/jenniezhupan/Library/Fonts/circular-std-medium-500.ttf");
 }
 body {
-  background: #141414;
+  font-family: "circular-std-medium-500";
+  background-color: #141414;
   margin: 0;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.2;
@@ -32,12 +32,7 @@ code {
 }
 
 .nav {
-  background: rgb(0, 0, 0);
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.6629026610644257) 0%,
-    rgba(9, 9, 121, 0) 57%
-  );
+  background-color: #141414;
   color: white;
   display: flex;
   align-items: center;
@@ -69,13 +64,13 @@ code {
 }
 
 .app-bar {
-  background-color: #141414;
+  background-color: #141414 !important;
 }
 .icon-button {
   margin-right: 15px;
 }
 
-.search-icon {
+/* .search-icon {
   size: 25px;
   color: inherit;
-}
+} */
